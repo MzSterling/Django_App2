@@ -35,6 +35,16 @@ resource "aws_ecs_task_definition" "app" {
     retries     = 3
     startPeriod = 10
   }
+  logConfiguration = {
+    logDriver = "awslogs"
+    options = {
+      "awslogs-group"         = "/ecs/media-analytics"
+      "awslogs-region"        = "us-east-1"   # replace with your region
+      "awslogs-stream-prefix" = "ecs"
+      }
+    }
+  
+ 
 
   }])
 }
